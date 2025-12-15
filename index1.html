@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayur Sapkale | Cybersecurity Professional</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: #0f1419;
+            color: #8b949e;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation Dots */
+        .nav-dots {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #30363d;
+            margin: 16px 0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .nav-dot.active {
+            background: #3fb950;
+            transform: scale(1.3);
+        }
+
+        /* Terminal Window */
+        .terminal {
+            background: #1c2128;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 1200px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .terminal-header {
+            background: #2d333b;
+            padding: 12px 16px;
+            border-bottom: 1px solid #30363d;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+
+        .terminal-title {
+            margin-left: 12px;
+            font-size: 13px;
+            color: #7d8590;
+        }
+
+        .terminal-body {
+            padding: 40px 32px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            color: #3fb950;
+            margin-bottom: 20px;
+            font-weight: 700;
+            animation: fadeInUp 0.8s ease;
+            min-height: 1.2em;
+        }
+
+        .typing-text {
+            display: inline-block;
+            overflow: hidden;
+            border-right: 3px solid #3fb950;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink-caret {
+            from, to {
+                border-color: transparent;
+            }
+            50% {
+                border-color: #3fb950;
+            }
+        }
+
+        .hero .subtitle {
+            font-size: 1.4em;
+            color: #7d8590;
+            margin-bottom: 16px;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .hero .info {
+            color: #58a6ff;
+            font-size: 1em;
+            margin: 12px 0;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .hero .contact {
+            color: #3fb950;
+            font-size: 0.95em;
+            animation: fadeInUp 0.8s ease 0.6s backwards;
+        }
+
+        .hero .phone {
+            color: #58a6ff;
+            font-size: 0.95em;
+            margin-top: 8px;
+            animation: fadeInUp 0.8s ease 0.7s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Logo Animation */
+        .logo-container {
+            display: inline-block;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 4em;
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* Image Logo Style */
+        .logo img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid #3fb950;
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(63, 185, 80, 0.3);
+        }
+
+        .logo:hover {
+            transform: scale(1.1) rotate(5deg);
+            filter: drop-shadow(0 0 20px rgba(63, 185, 80, 0.6));
+        }
+
+        .logo:hover img {
+            border-color: #4ac15e;
+            box-shadow: 0 0 30px rgba(63, 185, 80, 0.6);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Glowing Icons */
+        .icon-glow {
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .icon-glow:hover {
+            transform: scale(1.2) rotate(10deg);
+            filter: drop-shadow(0 0 10px #3fb950);
+        }
+
+        /* Icon Image Style */
+        .icon-img {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .icon-glow .icon-img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .icon-glow:hover .icon-img {
+            transform: scale(1.2) rotate(10deg);
+            filter: drop-shadow(0 0 10px #3fb950);
+        }
+
+        /* Larger icons for contact section */
+        .contact-icon .icon-img {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Button icons */
+        .btn .icon-img {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Terminal Cursor Animation */
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.2em;
+            background: #3fb950;
+            margin-left: 4px;
+            animation: blink 1s infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+            animation: fadeInUp 0.8s ease 0.8s backwards;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            border: 1px solid;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: #3fb950;
+            color: #0d1117;
+            border-color: #3fb950;
+        }
+
+        .btn-primary:hover {
+            background: #4ac15e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(63, 185, 80, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #58a6ff;
+            border-color: #58a6ff;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(88, 166, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(88, 166, 255, 0.3);
+        }
+
+        /* Ripple Effect */
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ripple::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(63, 185, 80, 0.4);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .ripple:active::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .scroll-indicator {
+            margin-top: 60px;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator p {
+            color: #3fb950;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Particle Background Effect */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #3fb950;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: particleFloat 15s infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin: 60px 0 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5em;
+            color: #3fb950;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .section-header p {
+            color: #7d8590;
+            font-size: 1.1em;
+        }
+
+        /* Code Block Effect */
+        .code-effect {
+            font-family: 'JetBrains Mono', monospace;
+            color: #3fb950;
+            opacity: 0.6;
+            font-size: 0.85em;
+        }
+
+        /* Project Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 24px;
+            margin: 0 20px 60px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(63, 185, 80, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(63, 185, 80, 0.3);
+            border-color: #3fb950;
+        }
+
+        .project-card .terminal-body {
+            padding: 24px;
+        }
+
+        .project-card h3 {
+            color: #3fb950;
+            font-size: 1.3em;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .github-link {
+            background: #3fb950;
+            color: #0d1117;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .github-link:hover {
+            background: #4ac15e;
+            transform: scale(1.05);
+        }
+
+        .project-desc {
+            color: #7d8590;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .tech-tag {
+            background: transparent;
+            color: #58a6ff;
+            border: 1px solid #58a6ff;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: rgba(88, 166, 255, 0.2);
+            transform: scale(1.1);
+            border-color: #3fb950;
+            color: #3fb950;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            margin: 0 20px 60px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .skill-category h3 {
+            color: #58a6ff;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .skill-item {
+            color: #3fb950;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .skill-item:before {
+            content: "▸";
+            color: #3fb950;
+        }
+
+        .skill-item:hover {
+            background: rgba(63, 185, 80, 0.15);
+            transform: translateX(8px);
+            color: #3fb950;
+        }
+
+        /* Certifications */
+        .cert-list {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .cert-item {
+            margin-bottom: 24px;
+        }
+
+        .cert-item h3 {
+            color: #3fb950;
+            font-size: 1.3em;
+            margin-bottom: 8px;
+        }
+
+        .cert-issuer {
+            color: #58a6ff;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+        }
+
+        .cert-details {
+            color: #7d8590;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .cert-badge {
+            background: #3fb950;
+            color: #0d1117;
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            display: inline-block;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cert-item:hover .cert-badge {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(63, 185, 80, 0.4);
+        }
+
+        /* Experience */
+        .experience-list {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .exp-item {
+            margin-bottom: 30px;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .exp-item h3 {
+            color: #3fb950;
+            font-size: 1.3em;
+        }
+
+        .exp-date {
+            color: #7d8590;
+            font-size: 0.9em;
+        }
+
+        .exp-company {
+            color: #58a6ff;
+            font-size: 0.95em;
+            margin-bottom: 12px;
+        }
+
+        .exp-points {
+            color: #7d8590;
+            line-height: 1.8;
+        }
+
+        .exp-points li {
+            margin-bottom: 8px;
+            margin-left: 20px;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            margin-bottom: 16px;
+            background: #2d333b;
+            border-radius: 6px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .contact-item:hover {
+            background: #373e47;
+            transform: translateX(8px);
+            box-shadow: 0 4px 20px rgba(63, 185, 80, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 2em;
+            color: #3fb950;
+        }
+
+        .contact-info h4 {
+            color: #3fb950;
+            margin-bottom: 4px;
+        }
+
+        .contact-info p {
+            color: #7d8590;
+            font-size: 0.9em;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #7d8590;
+            border-top: 1px solid #30363d;
+            margin-top: 60px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .project-grid, .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-dots {
+                display: none;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .section-header h2 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation Dots -->
+    <div class="nav-dots">
+        <div class="nav-dot active" onclick="scrollToSection('home')"></div>
+        <div class="nav-dot" onclick="scrollToSection('projects')"></div>
+        <div class="nav-dot" onclick="scrollToSection('skills')"></div>
+        <div class="nav-dot" onclick="scrollToSection('certifications')"></div>
+        <div class="nav-dot" onclick="scrollToSection('experience')"></div>
+        <div class="nav-dot" onclick="scrollToSection('contact')"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="terminal-dot dot-red"></div>
+                <div class="terminal-dot dot-yellow"></div>
+                <div class="terminal-dot dot-green"></div>
+                <span class="terminal-title">mayursapkale@cybersec ~ %<span class="typing-cursor"></span></span>
+            </div>
+            <div class="terminal-body">
+                <div class="logo-container">
+                    <!-- Option 1: Use Image (Replace 'your-image.jpg' with your image path) -->
+                    <div class="logo">
+                        <img src="iiiii1.jpg" alt="Mayur Sapkale">
+                    </div>
+                    
+                    <!-- Option 2: Use Emoji (Comment out the image above and uncomment below) -->
+                    <!-- <div class="logo">🛡️</div> -->
+                </div>
+                <h1 id="typingName"></h1>
+                <p class="subtitle">Cybersecurity Professional & Penetration Tester</p>
+                
+                <!-- REPLACE EMOJI WITH IMAGE ICONS - EXAMPLES BELOW -->
+                <p class="info">
+                    <span class="icon-glow">
+                        <!-- OPTION 1: Use Emoji -->
+                        
+                        <!-- OPTION 2: Use Image Icon (Uncomment and add your icon path) -->
+                        <img src="graduation.png" alt="education" class="icon-img"> 
+                    </span> 
+                    Founder & CEO at Cyber Shieldd
+                </p>
+                
+                <p class="contact">
+                    <span class="icon-glow">
+                        <!-- OPTION 1: Use Emoji -->
+                        
+                        <!-- OPTION 2: Use Image Icon (Uncomment and add your icon path) -->
+                        <img src="email.png" alt="email" class="icon-img"> 
+                    </span> 
+                    mayursapakale9503@gmail.com
+                </p>
+                
+                
+                
+                <div class="btn-group">
+                    <a href="#projects" class="btn btn-primary ripple">
+                        <span class="icon-glow">
+                            
+                           <img src="risk-mitigation.png" alt="projects" class="icon-img"> 
+                        </span> 
+                        View Projects
+                    </a>
+                    <a href="/Mayur Sapkale New Resume .pdf" class="btn btn-secondary ripple">
+                        <span class="icon-glow">
+                           
+                            <img src="download.png" alt="download" class="icon-img"> 
+                        </span> 
+                        Download Resume
+                    </a>
+                    <a href="https://github.com/M1yu3Xpl0rer22" class="btn btn-secondary ripple">
+                        <span class="icon-glow">
+                            
+                            <img src="code-compare.png" alt="github" class="icon-img"> 
+                        </span> 
+                        GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/mayur-sapkale-72855b25b/" class="btn btn-secondary ripple">
+                        <span class="icon-glow">
+                           
+                           <img src="linkedin.png" alt="linkedin" class="icon-img"> 
+                        </span> 
+                        LinkedIn
+                    </a>
+                </div>
+
+                <div class="scroll-indicator">
+                    <p>SCROLL DOWN</p>
+                    <p style="font-size: 1.5em;">↓</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-header">
+            <h2><span class="icon-glow">🥷🏻 </span> Projects</h2>
+            
+            <p class="code-effect">// Real-world cybersecurity implementations and research</p>
+        </div>
+
+        <div class="project-grid">
+            <div class="terminal project-card">
+                <div class="terminal-header">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                    <span class="terminal-title">subdomain-scanner.py</span>
+                </div>
+                <div class="terminal-body">
+                    <h3>
+                        Byakugan 
+                        <a href="https://github.com/M1yu3Xpl0rer22/Byakugan" class="github-link">🐙 GitHub</a>
+                    </h3>
+                    <p class="project-desc">
+                        Advanced multi-threaded subdomain enumeration tool with HTTP/HTTPS detection, 
+                        status code analysis, and content verification. Features include verbose mode, 
+                        silent operation, and customizable timeout settings.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Multi-threading</span>
+                        <span class="tech-tag">HTTP Requests</span>
+                        <span class="tech-tag">DNS Resolution</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="terminal project-card">
+                <div class="terminal-header">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                    <span class="terminal-title">Pakkun.py</span>
+                </div>
+                <div class="terminal-body">
+                    <h3>
+                       Pakkun 
+                        <a href="https://github.com/M1yu3Xpl0rer22/pakkun" class="github-link">🐙 GitHub</a>
+                    </h3>
+                    <p class="project-desc">
+                        Pakkun is a lightweight Python tool designed for educational and ethical security research. It scans a list of subdomains and checks for potential subdomain takeover vulnerabilities and misconfigurations like default server pages or unclaimed third-party services.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Subdomain </span>
+                        <span class="tech-tag">3rd-party services</span>
+                        <span class="tech-tag">multithreaded scanning</span>
+                        <span class="tech-tag">Linux and Windows</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="terminal project-card">
+                <div class="terminal-header">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                    <span class="terminal-title">Brute-Force.py</span>
+                </div>
+                <div class="terminal-body">
+                    <h3>
+                        Brute-Force-Login-Script
+                        <a href="https://github.com/M1yu3Xpl0rer22/Brute-Force-Login-Script" class="github-link">🐙 GitHub</a>
+                    </h3>
+                    <p class="project-desc">
+                        This educational security demonstration showcases how brute force attacks work against vulnerable login systems and provides comprehensive guidance on protecting social media accounts and personal data. The project features a professional UI/UX design with real-time attack simulation and detailed educational content.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Interactive Brute Force Simulation</span>
+                        <span class="tech-tag"> Modern UI/UX Design
+</span>
+                        <span class="tech-tag">Comprehensive Educational Content</span>
+                        <span class="tech-tag">Supported Platforms</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="terminal project-card">
+                <div class="terminal-header">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                    <span class="terminal-title">password-audit.py</span>
+                </div>
+                <div class="terminal-body">
+                   
+                    <h3>
+                         Password Security checker
+                        <a href="https://github.com/M1yu3Xpl0rer22/Password-Checker-With-HTML-CSS-JS" class="github-link">🐙 GitHub</a>
+                    </h3>
+                    <p class="project-desc">
+                        Password policy compliance checker with hash cracking capabilities. 
+                        Analyzes password strength, checks against leaked databases, and 
+                        provides security recommendations for enterprise environments.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Hashcat</span>
+                        <span class="tech-tag">John the Ripper</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Cryptography</span>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-header">
+            <h2><span class="icon-glow">🛠️</span> Skills & Technologies</h2>
+            <p class="code-effect">// Expertise across cybersecurity domains</p>
+        </div>
+
+        <div class="skills-grid">
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                    <span class="terminal-title">penetration-testing.sh</span>
+                </div>
+                <div class="terminal-body skill-category">
+                    <h3><span class="icon-glow">🎯</span> Penetration Testing</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">Metasploit</div>
+                        <div class="skill-item">Burp Suite</div>
+                        <div class="skill-item">Nmap</div>
+                        <div class="skill-item">SQLMap</div>
+                        <div class="skill-item">OWASP ZAP</div>
+                        <div class="skill-item">Nikto</div>
+                        <div class="skill-item">Kali Linux</div>
+                        <div class="skill-item">Wireshark</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                    <span class="terminal-title">security-tools.json</span>
+                </div>
+                <div class="terminal-body skill-category">
+                    <h3>🔍 Security Tools</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">Nessus</div>
+                        <div class="skill-item">Acunetix</div>
+                        <div class="skill-item">Aircrack-ng</div>
+                        <div class="skill-item">Hashcat</div>
+                        <div class="skill-item">John the Ripper</div>
+                        <div class="skill-item">Hydra</div>
+                        <div class="skill-item">Gobuster</div>
+                        <div class="skill-item">FFuf</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                    <span class="terminal-title">programming.py</span>
+                </div>
+                <div class="terminal-body skill-category">
+                    <h3>💻 Programming</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">Python</div>
+                        <div class="skill-item">Bash</div>
+                        <div class="skill-item">PowerShell</div>
+                       
+                        <div class="skill-item">SQL</div>
+                        
+                        <div class="skill-item">C</div>
+                       
+                    </div>
+                </div>
+            </div>
+
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                    <span class="terminal-title">cloud-security.aws</span>
+                </div>
+                <div class="terminal-body skill-category">
+                    <h3>☁️ Cloud Security</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">AWS</div>
+                        
+                      
+                        <div class="skill-item">Docker</div>
+                        <div class="skill-item">Kubernetes</div>
+                        
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="section-header">
+            <h2><span class="icon-glow">🎖️</span> Certifications</h2>
+            <p class="code-effect">// Professional cybersecurity credentials</p>
+        </div>
+
+        <div class="cert-list">
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                    <span class="terminal-title">certified-ethical-hacker.cert</span>
+                </div>
+                <div class="terminal-body cert-item">
+                    <h3> Introduction to Linux (LFS101)</h3>
+                    <p class="cert-issuer">The Linux Foundation • 2025</p>
+                    <p class="cert-details">
+                        Introduction to Linux (LFS101) is a beginner-friendly course by The Linux Foundation that teaches Linux basics, commands, and system concepts.
+It’s designed for new users and professionals to build a strong foundation in using Linux systems.
+                    </p>
+                   <!-- <span class="cert-badge">Certified - Valid until 2027</span>-->
+                </div>
+            </div>
+
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                    <span class="terminal-title">offensive-security.cert</span>
+                </div>
+                <div class="terminal-body cert-item">
+                    <h3>ISC² CC</h3>
+                    <p class="cert-issuer">ISC² CC • 2025</p>
+                    <p class="cert-details">
+                        I have successfully completed all 5 ISC² CC domain certificates.
+This reflects a strong foundation in cybersecurity principles, risk management, network security, access control, and security operations.
+It demonstrates my commitment to building professional knowledge aligned with global security standards.
+                    </p>
+                    <span class="cert-badge">Certified - Valid until 2028</span>
+                </div>
+            </div>
+
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                    <span class="terminal-title">ctf-champion.json</span>
+                </div>
+                <div class="terminal-body cert-item">
+                    <h3>Coding Seekho</h3>
+                    <p class="cert-issuer">Coding Seekho • 2024</p>
+                    <p class="cert-details">
+                        I have also earned the Coding Seekho Certificate, which includes training in IT Support, Cyber Security, and SOC Analysis.
+This has strengthened my practical skills in troubleshooting, security monitoring, and real-world cyber defense operations.
+
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="section-header">
+            <h2><span class="icon-glow">💼</span> Professional Experience</h2>
+            <p class="code-effect">// Cybersecurity internships and hands-on experience</p>
+        </div>
+
+        <div class="experience-list">
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                    <span class="terminal-title">security-intern.log</span>
+                </div>
+                <div class="terminal-body exp-item">
+                    <div class="exp-header">
+                        <h3>Founder & Lead Security Analyst</h3>
+                        <span class="exp-date">Oct 2024 - Present</span>
+                    </div>
+                    <p class="exp-company">CyberShield (Cybersecurity, Web Dev & Cloud Solutions)</p>
+                    <ul class="exp-points">
+                        <li>> Conducted security assessments on 20+ client websites identifying critical vulnerabilities</li>
+    <li>> Performed penetration testing following OWASP Top 10 methodology</li>
+    <li>> Developed custom web applications with integrated security features for 10+ clients</li>
+    <li>> Managed AWS cloud infrastructure setup and optimization for multiple organizations</li>
+    <li>> Provided 24/7 IT support and technical troubleshooting services</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                    <span class="terminal-title">analyst-intern.log</span>
+                </div>
+                <div class="terminal-body exp-item">
+                    <div class="exp-header">
+                        <h3>Security Analyst Intern</h3>
+                        <span class="exp-date">Feb 2024 - Aug 2024</span>
+                    </div>
+                    <p class="exp-company">TechnoHacks EduTech Official</p>
+                    <ul class="exp-points">
+                        <li>> Completed 10+ hands-on labs covering core cybersecurity concepts including reconnaissance, scanning, exploitation, and privilege escalation</li>
+<li>> Conducted 5+ penetration tests on simulated environments using tools such as Nmap, Burp Suite, and Metasploit</li>
+<li>> Gained practical experience with 6+ security tools including Wireshark, Snort, Nikto, and SIEM platforms (Splunk, QRadar)</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header">
+            <h2><span class="icon-glow">💬</span> Contact</h2>
+            <p class="code-effect">// Let's connect and build secure solutions together</p>
+        </div>
+
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="terminal-dot dot-red"></div>
+                <div class="terminal-dot dot-yellow"></div>
+                <div class="terminal-dot dot-green"></div>
+                <span class="terminal-title">contact.sh</span>
+            </div>
+            <div class="terminal-body contact-grid">
+                <div class="contact-item ripple" onclick="copyToClipboard('mayursapakale9503@gmail.com')">
+                    <div class="contact-icon icon-glow">📧</div>
+                    <div class="contact-info">
+                        <h4>mayursapakale9503@gmail.com</h4>
+                        <p>Click to copy email address</p>
+                    </div>
+                </div>
+
+                <div class="contact-item ripple" onclick="copyToClipboard('+91-9503705181')">
+                    <div class="contact-icon icon-glow">📱</div>
+                    <div class="contact-info">
+                        <h4>+91-9503705181</h4>
+                        <p>Click to copy phone number</p>
+                    </div>
+                </div>
+
+                <div class="contact-item ripple" onclick="window.open('https://github.com/M1yu3Xpl0rer22', '_blank')">
+                    <div class="contact-icon icon-glow">🐙</div>
+                    <div class="contact-info">
+                        <h4>github.com/mayursapkale</h4>
+                        <p>Open source contributions & projects</p>
+                    </div>
+                </div>
+
+                <div class="contact-item ripple" onclick="window.open('https://github.com/M1yu3Xpl0rer22', '_blank')">
+                    <div class="contact-icon icon-glow">💼</div>
+                    <div class="contact-info">
+                        <h4>linkedin.com/in/mayursapkale</h4>
+                        <p>Professional network & experience</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon icon-glow">📍</div>
+                    <div class="contact-info">
+                        <h4>Jalgoan, Maharashtra, India</h4>
+                        <p>Available for remote & on-site opportunities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Mayur Sapkale. All rights reserved. | Created by Mayur Sapkale</p>
+        <p style="font-size: 0.85em; margin-top: 12px; opacity: 0.7;">
+            Built with passion for cybersecurity | Terminal-themed portfolio
+        </p>
+    </footer>
+
+    <script>
+        // Typing effect for name
+        function typeText(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            element.style.borderRight = '3px solid #3fb950';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    // Keep blinking cursor for a moment, then remove it
+                    setTimeout(() => {
+                        element.style.borderRight = 'none';
+                    }, 1000);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing effect after page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const nameElement = document.getElementById('typingName');
+                typeText(nameElement, 'Mayur Sapkale', 150);
+            }, 500);
+        });
+
+        // Create particle background
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize particles on load
+        createParticles();
+
+        // Smooth scroll to sections
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Update active nav dot on scroll
+        window.addEventListener('scroll', () => {
+            const sections = ['home', 'projects', 'skills', 'certifications', 'experience', 'contact'];
+            const dots = document.querySelectorAll('.nav-dot');
+            
+            let current = '';
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                const rect = element.getBoundingClientRect();
+                if (rect.top <= 150 && rect.bottom >= 150) {
+                    current = section;
+                }
+            });
+
+            dots.forEach((dot, index) => {
+                dot.classList.remove('active');
+                if (sections[index] === current) {
+                    dot.classList.add('active');
+                }
+            });
+        });
+
+        // Copy to clipboard function with better feedback
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Create a temporary notification
+                const notification = document.createElement('div');
+                notification.textContent = '✓ Copied: ' + text;
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: #3fb950;
+                    color: #0d1117;
+                    padding: 16px 24px;
+                    border-radius: 6px;
+                    font-weight: 600;
+                    z-index: 10000;
+                    animation: slideIn 0.3s ease;
+                `;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => notification.remove(), 300);
+                }, 2000);
+            });
+        }
+
+        // Add slide in/out animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add intersection observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all terminal cards
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.terminal').forEach(el => {
+                el.style.opacity = '0';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
